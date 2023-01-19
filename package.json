@@ -1,0 +1,19 @@
+{
+  "name": "omega-gaming",
+  "version": "1.0.0",
+  "description": "A gaming blog website where you can share your thoughts and ideas about your favorite games!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ccooper9893/Omega-Gaming.git"
+  },
+  "author": "Cody Cooper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ccooper9893/Omega-Gaming/issues"
+  },
+  "homepage": "https://github.com/Ccooper9893/Omega-Gaming#readme"
+}
