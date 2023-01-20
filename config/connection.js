@@ -1,19 +1,23 @@
 require('dotenv').config(); //Loads .env file contents into process.env
-
-const Sequelize = require('sequelize'); //Imports sequelize
+const { Sequelize } = require('sequelize'); //Imports sequelize
 
 //Configuring sequelize database connection
 const sequelize = process.env.JAWSDB_URL 
     ? new Sequelize(process.env.JAWSDB_URL) 
     : new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
         host: 'localhost',
-        dialect: 'mysql'
-    // Used when there are decimal numbers in database?
-    //     dialectOptions: {
-    //     decimalNumbers: true,
-    //   },
-    // dateStrings: Force date types (TIMESTAMP, DATETIME, DATE) to be returned as strings rather than
-    // inflated into JavaScript Date objects. Can be true/false or an array of type names to keep as strings. (Default: false)
+        dialect: 'mysql',
+        port: 3306,
     });
 
+const test = async () => {
+try {
+  await sequelize.authenticate();
+  console.log('Connection has been established successfully.');
+    } catch (error) {
+  console.error('Unable to connect to the database:', error);
+    }
+}
+
+test();
 module.exports = sequelize; //Exports to express server.js
