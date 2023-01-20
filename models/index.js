@@ -1,14 +1,18 @@
 const User = require('./User');
 const Blog = require('./Blog');
+const Comment = require('./Comment');
 
 //Associations
-//Blog belongs to User
 Blog.belongsTo(User);
+Blog.hasMany(Comment);
 
-//User has many blogs
 User.hasMany(Blog);
+User.hasMany(Comment);
+
+Comment.belongsTo(User);
 
 module.exports = {
     User,
-    Blog
+    Blog,
+    Comment,
 };

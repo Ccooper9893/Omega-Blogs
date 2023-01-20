@@ -40,6 +40,7 @@ Blog.init(
         underscored: true,
         freezeTableName: true,
         timestamps: true,
+        updatedAt: false, //Dont include updatedAt timestamp
         modelName: 'blog'
     }
 );
