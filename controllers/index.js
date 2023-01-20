@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 //Importing routers
 const homePage = require('./home-routes');
-const apiRoute = require('./api')
+const apiRoute = require('./api');
 
 //Middleware for routes
 router.use('/', homePage);
