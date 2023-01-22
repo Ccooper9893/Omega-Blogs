@@ -37,13 +37,11 @@ const sess = {
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-//
+//Mounting middleware
 app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 app.use(controller);
 
 //Sync sequelize models to the database, then turn on the server
