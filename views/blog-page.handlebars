@@ -1,0 +1,18 @@
+  <section class="row d-flex justify-content-center">
+    <div class="card m-3" style="width: 30rem;">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">Posted by {{blog.user.username}} on {{formatDate blog.createdAt}}</h6>
+        <h5 class="card-title">{{blog.title}}</h5>
+        <br><p class="card-text">{{blog.blog_body}}</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <form class="row d-flex justify-content-center">
+      <div class="form-group" style="width: 25rem">
+        <label for="exampleFormControlTextarea1">Add a comment</label>
+        <textarea class="form-control shadow-none" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <button type="submit" class="btn-dark mt-1">Post</button>
+      </div>
+    </form>
+  </section>
