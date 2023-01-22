@@ -3,8 +3,6 @@ const { Blog, User } = require('../models');
 
 //Homepage Route 
 router.get('/', async (req, res) => {
-    console.log('Homepage route');
-
     try {
         const blogs = await Blog.findAll({
             raw: true,
@@ -15,8 +13,8 @@ router.get('/', async (req, res) => {
                 },
               ],
         });
-        console.log(blogs);
-        res.render('homepage', {blogs})
+        // console.log(blogs);
+        res.render('homepage', {blogs, loggedIn: req.session.loggedIn})
 
     } catch (error) {
         console.log(error);
@@ -28,23 +26,25 @@ router.get('/blog/:id', async (req, res) => {
     try {
         const blogData = await Blog.findByPk(req.params.id, {
             raw: false,
-            include: {model: User},      
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ],      
         });
-        
+
+        // If plain is true, then sequelize will only return the first
+        // record of the result set. In case of false it will return all records.
         const blog = blogData.get({plain:true})
-        console.log(typeof blog.createdAt);
-        console.log(blog.createdAt);
-        date = blog.createdAt
-        console.log(date.toLocaleDateString());
-        res.render('blog-page', {blog});
+        res.render('blog-page', {blog, loggedIn: req.session.loggedIn});
+
     } catch (error) {
         res.status(400).json(error)
     };
-    // res.render('blog-page', {blog})
 });
 
 router.get('/login', (req, res) => {
-    //Check to see if user is already logged in
     res.render('login-page')
 })
 

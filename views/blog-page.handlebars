@@ -1,7 +1,7 @@
   <section class="row d-flex justify-content-center">
     <div class="card m-3" style="width: 30rem;">
       <div class="card-body">
-        <h6 class="card-subtitle mb-2 text-muted">Posted by {{blog.user.username}} on {{formatDate blog.createdAt}}</h6>
+        {{#if loggedIn}}<h6 class="card-subtitle mb-2 text-muted">Posted by {{blog.user.username}} on {{formatDate blog.createdAt}}</h6>
         <h5 class="card-title">{{blog.title}}</h5>
         <br><p class="card-text">{{blog.blog_body}}</p>
       </div>
@@ -15,4 +15,8 @@
         <button type="submit" class="btn-dark mt-1">Post</button>
       </div>
     </form>
+    {{else}}
+      <h5 class="card-title text-danger">You must be signed in to view blog posts!</h5>
+      </div>
+    {{/if}}
   </section>

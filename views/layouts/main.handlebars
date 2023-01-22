@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/style.css">  
   </head>
   <body>
-    <header class="border-bottom border-dark">
+    <header class="border-bottom border-dark shadow-sm">
       <ul class="nav justify-content-center">
         <li class="nav-item px-5">
           <a class="nav-link text-reset mt-3" aria-current="/dashboard" href="#">DASHBOARD</a>
@@ -20,9 +20,13 @@
           <a class="nav-link text-reset" id="logo" href="/">&Omega;</a>
         </li>
         <li class="nav-item px-5">
-        {{!-- If user is not logged in show sign in link --}}
+                {{!-- If user is logged in show sign out link --}}
+        {{#if loggedIn}}
+          <button id="signout" class="btn mt-3">SIGN OUT</button>
+                {{!-- If user is not logged in show sign in link --}}
+          {{else}}
           <a class="nav-link text-reset mt-3" href="/login">SIGN IN</a>
-        {{!-- If user is logged in show sign out link --}}
+        {{/if}}
         </li>
       </ul>
     </header>

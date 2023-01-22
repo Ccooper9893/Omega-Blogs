@@ -1,7 +1,7 @@
-<div class="card m-3" style="width: 18rem;">
+<div class="card m-3 shadow" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Posted by {{'user.username'}} on {{createdAt}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">Posted by {{'user.username'}} on {{formatDate createdAt}}</h6>
         <a href="/blog/{{id}}" class="card-link text-reset">View Blog</a>
     </div>
 </div>

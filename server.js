@@ -11,7 +11,7 @@ const hbs = exphbs.create({ helpers });
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-//Setting up session middleware including cookie
+//Setting up session middleware including cookie and connects to our MySQL database
 const sess = {
     secret: 'EncryptedSecretPassword',
     // Express session will use cookies by default, but we can specify options for those cookies by adding a cookies property to our session options.

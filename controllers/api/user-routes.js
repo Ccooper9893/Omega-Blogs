@@ -10,15 +10,10 @@ router.post('/signup', async (req, res) => {
             password: req.body.password
         });
 
-        if(!newUserData) {
-            res.status(400).json({message: 'Please provide the required information!'});
-            return;
-        };
-
         req.session.save(() => {
             req.session.loggedIn = true;
-            req.session.user = newUserData;
-            res.status(201).json(newUserData);
+            req.session.user = newUserData; //Saves data to session
+            res.status(201).json({newUserData});
         });
 
     } catch (error) {
@@ -27,7 +22,7 @@ router.post('/signup', async (req, res) => {
 });
 
 //User Sign in
-router.post('/signin', async (res, req) => {
+router.post('/signin', async (req, res) => {
     try {
         const userData = await User.findOne({
             where: {
@@ -35,18 +30,29 @@ router.post('/signin', async (res, req) => {
             }
         });
 
+        console.log(userData);
+        //If user does not exist
         if(!userData) {
             res.status(400).json({message: 'Invalid username/password. Please try again!'});
             return;
         };
-
+        
+        //Validating password
         const validatePassword = await User.checkPassword(req.body.password);
-
         if(!validatePassword) {
-            res.status(400).json({ message: 'Invalid username/password. Please try again!' })
-        }
+           res.status(400).json({message: 'Invalid username/password. Please try again!'});
+           return;
+        };
+
+        req.session.save(() => {
+            req.session. loggedIn = true;
+            req.session.user = userData;
+        });
+
+        res.status(200).json({ message: 'You are now logged in!' })
 
     } catch (error) {
+        console.log(error);
         res.status(500).json(error);
     };
 });
