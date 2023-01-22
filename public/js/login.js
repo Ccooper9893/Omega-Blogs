@@ -1,4 +1,4 @@
-const signInForm = document.querySelector('.signinform')
+const signInBtn = document.querySelector('#signInBtn')
 
 const userLoginForm = async (e) => {
     e.preventDefault();
@@ -21,4 +21,4 @@ const userLoginForm = async (e) => {
     };
 };
 
-signInForm.addEventListener('submit', userLoginForm);
+signInBtn.addEventListener('click', userLoginForm);

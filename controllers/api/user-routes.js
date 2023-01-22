@@ -27,10 +27,9 @@ router.post('/signin', async (req, res) => {
         const userData = await User.findOne({
             where: {
                 username: req.body.username
-            }
+            },
         });
-
-        console.log(userData);
+        
         //If user does not exist
         if(!userData) {
             res.status(400).json({message: 'Invalid username/password. Please try again!'});
@@ -38,8 +37,8 @@ router.post('/signin', async (req, res) => {
         };
         
         //Validating password
-        const validatePassword = await User.checkPassword(req.body.password);
-        if(!validatePassword) {
+        const validPassword = await userData.validatePassword(req.body.password);
+        if(!validPassword) {
            res.status(400).json({message: 'Invalid username/password. Please try again!'});
            return;
         };
@@ -49,14 +48,31 @@ router.post('/signin', async (req, res) => {
             req.session.user = userData;
         });
 
-        res.status(200).json({ message: 'You are now logged in!' })
+        // res.status(200).json({ message: 'You are now logged in!' })
 
     } catch (error) {
         console.log(error);
         res.status(500).json(error);
     };
 });
+
+//User Sign Out
+router.post('/signout', (req, res) => {
+    if(req.session.loggedIn) {
+        req.session.destroy((err) => {
+            if(err) {
+                console.log(err)
+            } else {
+                res.status(204).end();
+            }
+        });
+    } else {
+        res.status(400).end();
+    }
+});
+
 //Post blog
+
 
 //Post comment
 
