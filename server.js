@@ -16,8 +16,8 @@ const sess = {
     secret: 'EncryptedSecretPassword',
     // Express session will use cookies by default, but we can specify options for those cookies by adding a cookies property to our session options.
     cookie: {
-      // maxAge sets the maximum age for the cookie to be valid. Here, the cookie (and session) will expire after one hour. The time should be given in milliseconds.
-      maxAge: 20 * 60 * 1000,
+      // maxAge sets the maximum age for the cookie to be valid.
+      maxAge: 1000 * 60 * 15, //15 minutes
       // httpOnly tells express-session to only store session cookies when the protocol being used to connect to the server is HTTP.
       httpOnly: true,
       // secure tells express-session to only initialize session cookies when the protocol being used is HTTPS. Having this set to true, and running a server without encryption will result in the cookies not showing up in your developer console.
@@ -26,7 +26,7 @@ const sess = {
       sameSite: 'strict',
     },
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: false, //Only save sessions when we res.session.save()
     // Sets up session store
     store: new SequelizeStore({
       db: sequelize,
