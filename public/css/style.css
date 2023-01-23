@@ -5,3 +5,11 @@
 #logo {
     font-size: 2rem;
 }
+
+.nav-link {
+    color: black !important;
+}
+
+.nav-link:hover {
+    text-shadow: 1px 1px 1px grey;
+}

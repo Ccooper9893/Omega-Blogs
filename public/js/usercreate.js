@@ -1,4 +1,4 @@
-const signUpForm = document.querySelector('.signupform');
+const signUpForm = document.querySelector('.signup-form');
 
 const createAccountForm = async (e) => {
     e.preventDefault();
@@ -15,7 +15,7 @@ const createAccountForm = async (e) => {
         });
 
         if(response.ok) {
-            document.location.replace('/')
+            document.location.replace('/login')
         } else {
             alert('Failed to sign up.');
         };

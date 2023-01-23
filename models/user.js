@@ -10,7 +10,7 @@ class User extends Model {
     //Password validation function
     validatePassword(attempt) {
         return bcrypt.compareSync(attempt, this.password);
-    };
+    }
 };
 
 //Initializes to define a new table in MySQL database for users information

@@ -1,8 +1,5 @@
-const signInBtn = document.querySelector('#signInBtn')
-
 const userLoginForm = async (e) => {
     e.preventDefault();
-
     const username = document.querySelector('#inputUsername').value.trim();
     const password = document.querySelector('#inputPassword').value.trim();
 
@@ -12,13 +9,15 @@ const userLoginForm = async (e) => {
             body: JSON.stringify({username, password}),
             headers: {'Content-Type': 'application/json'},
         });
-
-        if(response.ok) {
+    
+        if (response.ok) {
+            console.log('Successfully signed in!');
             document.location.replace('/')
+            }
         } else {
-            console.log(response.message);
-        }
-    };
+            alert('Bad credentials!')
+        };
 };
 
-signInBtn.addEventListener('click', userLoginForm);
+const signInBtn = document.querySelector('.login-form');
+signInBtn.addEventListener('submit', userLoginForm);

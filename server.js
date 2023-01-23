@@ -26,7 +26,7 @@ const sess = {
       sameSite: 'strict',
     },
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     // Sets up session store
     store: new SequelizeStore({
       db: sequelize,

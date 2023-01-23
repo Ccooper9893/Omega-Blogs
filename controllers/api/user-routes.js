@@ -10,11 +10,18 @@ router.post('/signup', async (req, res) => {
             password: req.body.password
         });
 
-        req.session.save(() => {
-            req.session.loggedIn = true;
-            req.session.user = newUserData; //Saves data to session
-            res.status(201).json({newUserData});
-        });
+        if (!newUserData) {
+            res.status(400).json({message: 'Insufficient data'});
+            return;
+        }
+
+        res.status(202).json({message: 'You account has been created!'});
+        // req.session.save(() => {
+        //     req.session.loggedIn = true;
+        //     req.session.user = newUserData; //Saves data to session
+        //     res.status(201).json({message: 'Your account has been created!'});
+            
+        // });
 
     } catch (error) {
         res.status(500).json(error);
@@ -44,11 +51,10 @@ router.post('/signin', async (req, res) => {
         };
 
         req.session.save(() => {
-            req.session. loggedIn = true;
+            req.session.loggedIn = true;
             req.session.user = userData;
+            res.status(200).json({message: userData});
         });
-
-        // res.status(200).json({ message: 'You are now logged in!' })
 
     } catch (error) {
         console.log(error);
