@@ -26,6 +26,7 @@ User.init(
         username: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
         },
         password: {
             type: DataTypes.STRING,
@@ -37,6 +38,7 @@ User.init(
         email: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 isEmail: true
             },
@@ -48,12 +50,18 @@ User.init(
             async beforeCreate(newUserData) {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData;
-              },
-        },
+                  },
+            async beforeBulkCreate(newUserData) {
+                for(const user of newUserData) {
+                    user.password =  await bcrypt.hash(user.password, 10);
+                }
+                return newUserData;
+            }
+            },
     
     //Table options
         sequelize,
-        underscored: false,
+        underscored: true,
         freezeTableName: true,
         timestamps: false,
         modelName: 'user',

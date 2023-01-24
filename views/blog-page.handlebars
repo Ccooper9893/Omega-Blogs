@@ -1,18 +1,23 @@
   <section class="row d-flex justify-content-center">
-    <div class="card m-3" style="width: 50rem;">
+    <div class="card m-3 shadow-lg" style="width: 50rem;">
       <div class="card-body">
-        {{#if loggedIn}}<h6 class="card-subtitle mb-2 text-muted">Posted by {{blog.user.username}} on {{formatDate blog.createdAt}}</h6>
+        {{#if loggedIn}}
+        <h6 class="card-subtitle mb-2 text-muted">Posted by {{blog.user.username}} on {{formatDate blog.createdAt}}</h6>
         <h5 class="card-title">{{blog.title}}</h5>
         <br><p class="card-text">{{blog.blog_body}}</p>
       </div>
+      {{#if isOwner}}
+        <a href="#" id="editBtn" class="card-link text-reset">Edit</a>
+    {{/if}}
     </div>
   </section>
+  
   <section>
     <form class="row d-flex justify-content-center">
       <div class="form-group" style="width: 37rem">
         <label for="exampleFormControlTextarea1">Add a comment</label>
-        <textarea class="form-control shadow-none" id="exampleFormControlTextarea1" rows="3"></textarea>
-        <button type="submit" class="btn-dark mt-1">Post</button>
+        <textarea class="form-control shadow-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <button type="submit" class="btn border-dark mt-2">Comment</button>
       </div>
     </form>
     {{else}}

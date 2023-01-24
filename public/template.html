@@ -24,7 +24,6 @@
         </li>
       </ul>
     </header>
-    <main class="main-body">
     <section class="d-flex justify-content-center">
       <div class="card m-3" style="width: 35rem;">
         <div class="card-body">
@@ -33,7 +32,33 @@
         </div>
       </div>
   </section>
-</main>
+  <!-- Add display: block; to class to display -->
+  <div class="modal editBlog" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form class="row d-block justify-content-center p-3"> 
+          <div class="form-group" style="width: 37rem">
+            <label for="editTitle">Title</label>
+            <input type="text" class="form-control" id="editTitle" placeholder="{{blog.title}}">
+            <label class="mt-2" for="editBody">Title</label>
+            <textarea class="form-control shadow-sm" id="editTitle" rows="3" placeholder="{{blog.blog_body}}"></textarea>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn border-dark">Save changes</button>
+          <button type="button" class="btn border-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>
+

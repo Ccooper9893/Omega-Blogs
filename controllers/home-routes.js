@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog, User } = require('../models');
+const { Blog, User, Comment } = require('../models');
 
 //Homepage Route 
 router.get('/', async (req, res) => {
@@ -29,15 +29,30 @@ router.get('/blog/:id', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['username']
-                }
-            ],      
+                    attributes: ['username'],
+                },
+            ],     
         });
 
-        // If plain is true, then sequelize will only return the first
-        // record of the result set. In case of false it will return all records.
-        const blog = blogData.get({plain:true})
-        res.render('blog-page', {blog, loggedIn: req.session.loggedIn});
+        const commentData = await Comment.findAll({
+            where: {
+                blog_id: blogData.id //Finds all comments on requested blog
+            },
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                },
+            ],
+        });
+
+        const comments = commentData.map((comment) =>
+        comment.get({ plain: true })
+        );
+
+        const isOwner = req.session.user.id === blogData.user_id;
+        const blog = blogData.get({plain:true});
+        res.render('blog-page', {blog, comments, loggedIn: req.session.loggedIn, isOwner});
 
     } catch (error) {
         res.status(400).json(error)
@@ -52,7 +67,27 @@ router.get('/signup', (req, res) => {
     res.render('signup-page');
 });
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', async (req, res) => {
+    try {
+        const blogs = await Blog.findAll({
+            raw:true,
+            where: {
+                user_id: req.session.user.id,
+                },
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ]
+        });
+
+        // const blog = blogData.get({plain: false});
+
+        res.render('dashboard', {blogs, loggedIn: req.session.loggedIn});
+    } catch (error) {
+        
+    }
 });
 
 module.exports = router;

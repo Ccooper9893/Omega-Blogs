@@ -23,7 +23,7 @@ Blog.init(
             },
         },
         blog_body: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,   
         },
         user_id: {
@@ -40,7 +40,6 @@ Blog.init(
         underscored: true,
         freezeTableName: true,
         timestamps: true,
-        updatedAt: false, //Dont include updatedAt timestamp
         modelName: 'blog'
     }
 );

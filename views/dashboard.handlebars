@@ -1,12 +1,17 @@
 <section class="row d-flex justify-content-center">
     <div class="card">
   <div class="card-body">
-    <h4>Welcome to your Omega Dashboard {{username}}</h4>
+    <h4 class="text-center">Welcome to your Omega Dashboard {{user.username}}</h4>
   </div>
 </div>
 </section>
+<section class="d-flex justify-content-center">
+  <button type="button" class="btn border-dark mt-2">New Blog</button>
+</section>
 <section class="row d-flex justify-content-center">
     {{#each blogs as |blog|}}
-      {{> user-blogs}}
+      {{> blog-cards}}
     {{/each}}
-    </section>
+</section>
+
+<script src="./js/createblog.js"></script>

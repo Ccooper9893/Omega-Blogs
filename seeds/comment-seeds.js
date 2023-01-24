@@ -7,15 +7,29 @@ const commentData = [
         blog_id: 1,
     },
     {
-        text: 'I like this blog',
+        text: 'I like this blog ton! Thank you.',
         user_id: 1,
         blog_id: 3,
     },
     {
-        text: 'I dont like this blog',
+        text: 'Terrible job, you suck!',
         user_id: 3,
-        blog_id: 4,
-        
+        blog_id: 2,
+    },
+    {
+        text: 'I disagree with your opinions.',
+        user_id: 1,
+        blog_id: 3,
+    },
+    {
+        text: 'Great job, amazing article!',
+        user_id: 1,
+        blog_id: 3,
+    },
+    {
+        text: 'Cool!',
+        user_id: 1,
+        blog_id: 2,
     }
 ];
 
