@@ -56,13 +56,13 @@ User.init(
                     user.password =  await bcrypt.hash(user.password, 10);
                 }
                 return newUserData;
-            }
+                }
             },
     
     //Table options
         sequelize,
         underscored: true,
-        freezeTableName: true,
+        freezeTableName: true, //Tells sequelize to make table name plural (ex. users) 
         timestamps: false,
         modelName: 'user',
     },

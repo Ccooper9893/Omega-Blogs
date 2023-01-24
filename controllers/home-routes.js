@@ -17,13 +17,18 @@ router.get('/', async (req, res) => {
         res.render('homepage', {blogs, loggedIn: req.session.loggedIn})
 
     } catch (error) {
-        console.log(error);
         res.status(500).json(error)
     }
 });
 
 router.get('/blog/:id', async (req, res) => {
     try {
+        
+        if(!req.session.loggedIn) {
+            res.render('login-page');
+            return;
+        }
+
         const blogData = await Blog.findByPk(req.params.id, {
             raw: false,
             include: [
@@ -68,6 +73,12 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/dashboard', async (req, res) => {
+
+    if(!req.session.loggedIn) { //If user is not logged in redirect to login page
+        res.render('login-page')
+        return;
+    }
+
     try {
         const blogs = await Blog.findAll({
             raw:true,
@@ -82,11 +93,10 @@ router.get('/dashboard', async (req, res) => {
             ]
         });
 
-        // const blog = blogData.get({plain: false});
-
         res.render('dashboard', {blogs, loggedIn: req.session.loggedIn});
+
     } catch (error) {
-        
+        res.status(400).json(error)
     }
 });
 

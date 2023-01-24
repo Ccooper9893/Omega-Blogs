@@ -1,7 +1,6 @@
   <section class="row d-flex justify-content-center">
     <div class="card m-3 shadow-lg" style="width: 50rem;">
       <div class="card-body">
-        {{#if loggedIn}}
         <h6 class="card-subtitle mb-2 text-muted">Posted by {{blog.user.username}} on {{formatDate blog.createdAt}}</h6>
         <h5 class="card-title">{{blog.title}}</h5>
         <br><p class="card-text">{{blog.blog_body}}</p>
@@ -20,10 +19,6 @@
         <button type="submit" class="btn border-dark mt-2">Comment</button>
       </div>
     </form>
-    {{else}}
-      <h5 class="card-title text-danger">You must be signed in to view blog posts!</h5>
-      </div>
-    {{/if}}
   </section>
   {{#each comments as |comment|}}
   {{> comment-cards}}

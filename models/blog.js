@@ -40,8 +40,8 @@ Blog.init(
         underscored: true,
         freezeTableName: true,
         timestamps: true,
-        modelName: 'blog'
-    }
+        modelName: 'blog',
+    },
 );
 
 module.exports = Blog;
