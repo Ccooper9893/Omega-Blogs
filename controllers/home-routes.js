@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Blog, User, Comment } = require('../models');
+const isAuth = require('../utils/auth');
 
 //Homepage Route 
 router.get('/', async (req, res) => {
@@ -13,7 +14,7 @@ router.get('/', async (req, res) => {
                 },
               ],
         });
-        // console.log(blogs);
+
         res.render('homepage', {blogs, loggedIn: req.session.loggedIn})
 
     } catch (error) {
@@ -21,14 +22,9 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/blog/:id', async (req, res) => {
-    try {
-        
-        if(!req.session.loggedIn) {
-            res.render('login-page');
-            return;
-        }
+router.get('/blog/:id', isAuth, async (req, res) => {
 
+    try { //Grabbing blog by primary key id
         const blogData = await Blog.findByPk(req.params.id, {
             raw: false,
             include: [
@@ -39,6 +35,7 @@ router.get('/blog/:id', async (req, res) => {
             ],     
         });
 
+        //Grabbing all comments associated with the blog
         const commentData = await Comment.findAll({
             where: {
                 blog_id: blogData.id //Finds all comments on requested blog
@@ -50,12 +47,13 @@ router.get('/blog/:id', async (req, res) => {
                 },
             ],
         });
-
+        
+        //Maps comments and returns new array
         const comments = commentData.map((comment) =>
-        comment.get({ plain: true })
+        comment.get({ plain: true })//Converts entity to plain js object
         );
 
-        const isOwner = req.session.user.id === blogData.user_id;
+        const isOwner = req.session.user.id === blogData.user_id;//Checks if blog is owned by current user
         const blog = blogData.get({plain:true});
         res.render('blog-page', {blog, comments, loggedIn: req.session.loggedIn, isOwner});
 
@@ -66,18 +64,13 @@ router.get('/blog/:id', async (req, res) => {
 
 router.get('/login', (req, res) => {
     res.render('login-page')
-})
+});
 
 router.get('/signup', (req, res) => { 
     res.render('signup-page');
 });
 
-router.get('/dashboard', async (req, res) => {
-
-    if(!req.session.loggedIn) { //If user is not logged in redirect to login page
-        res.render('login-page')
-        return;
-    }
+router.get('/dashboard', isAuth, async (req, res) => {
 
     try {
         const blogs = await Blog.findAll({
@@ -89,15 +82,19 @@ router.get('/dashboard', async (req, res) => {
                 {
                     model: User,
                     attributes: ['username']
-                }
-            ]
+                },
+            ],
         });
 
         res.render('dashboard', {blogs, loggedIn: req.session.loggedIn});
 
     } catch (error) {
-        res.status(400).json(error)
-    }
+        res.status(400).json(error);
+    };
+});
+
+router.get('/newblog', (req, res) => {
+    res.render('blog-create.handlebars');
 });
 
 module.exports = router;
