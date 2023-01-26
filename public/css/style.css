@@ -23,10 +23,8 @@
     outline: none !important;
 }
 
-.footer {
-    display: flex;
-    justify-content: space-around;
+#footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-}
+ }

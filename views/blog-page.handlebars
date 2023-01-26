@@ -6,7 +6,7 @@
         <br><p class="card-text">{{blog.blog_body}}</p>
       </div>
       {{#if isOwner}}
-        <a href="#" id="editBtn" class="card-link text-reset">Edit</a>
+        <a href="/edit/{{blog.id}}" id="editBtn" class="card-link text-reset">Edit</a>
     {{/if}}
     </div>
   </section>
@@ -14,12 +14,14 @@
   <section>
     <form class="row d-flex justify-content-center">
       <div class="form-group" style="width: 37rem">
-        <label for="exampleFormControlTextarea1">Add a comment</label>
-        <textarea class="form-control shadow-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
-        <button type="submit" class="btn border-dark mt-2">Comment</button>
+        <label for="comment">Add a comment</label>
+        <textarea class="form-control shadow-sm" id="comment" rows="3"></textarea>
+        <button id="commentBtn" class="btn border-dark mt-2">Comment</button>
       </div>
     </form>
   </section>
   {{#each comments as |comment|}}
   {{> comment-cards}}
   {{/each}}
+
+  <script src="/js/comment.js"></script>

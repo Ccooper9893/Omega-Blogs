@@ -76,9 +76,10 @@ router.post('/signout', isAuth, (req, res) => {
         res.status(400).end();
     }
 });
+
 //Post blog
 router.post('/newblog', isAuth, async (req, res) => {
-    console.log('create blog route')
+
     try {
         const newBlog = await Blog.create({
             title: req.body.blogTitle,
@@ -96,6 +97,48 @@ router.post('/newblog', isAuth, async (req, res) => {
         res.status(500).json(error)
     };
 });
+
+//Update Blog
+router.post('/edit/:id', isAuth, async (req, res) => {
+
+    try {
+
+        const blog = await Blog.findOne({ where: { id: req.params.id } });
+        blog.set({
+            title: req.body.newTitle,
+            blog_body: req.body.newBody,
+        });
+
+        blog.save();
+
+        if (!blog) {
+            res.status(400).json({message: 'There has been an error updating the blog.'})
+        };
+
+        res.status(202).json({message: 'Blog has been updated.'})
+    } catch (error) {
+        res.status(500).json(error);
+    };
+});
+
 //Post comment
+router.post('/comment/:id', isAuth, async (req, res) => {
+    try {
+        const newComment = Comment.create({
+            text: req.body.comment,
+            blog_id: req.params.id,
+            user_id: req.session.user.id,
+        });
+
+        if(!newComment) {
+            res.status(400).json({message: 'There has been an error posting your comment.'});
+            return;
+        };
+
+        res.status(200).json({message: 'Your comment has been posted.'});
+    } catch (error) {
+        res.status(500).json(error);
+    };
+});
 
 module.exports = router;

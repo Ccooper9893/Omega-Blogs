@@ -16,7 +16,7 @@ const createBlog = async (e) => {
             });
     
             if(!response.ok) {
-                console.log('An error has occurred with redirection.');
+                alert('There has been an error creating your blog post.')
             } else {
                 document.location.replace('/dashboard');
             };

@@ -94,7 +94,21 @@ router.get('/dashboard', isAuth, async (req, res) => {
 });
 
 router.get('/newblog', (req, res) => {
-    res.render('blog-create.handlebars');
+    res.render('blog-create');
 });
 
+router.get('/edit/:id', isAuth, async (req, res) => {
+    try {
+        const blogData = await Blog.findByPk(req.params.id);
+        if(!blogData) {
+            res.status(404).json({message: 'No blog with that id!'});
+            return;
+        };
+        const blog = blogData.get({plain: true});
+        res.render('blog-edit', {blog});
+    } catch (error) {
+        res.status(500).json(error);
+    }
+    
+})
 module.exports = router;
