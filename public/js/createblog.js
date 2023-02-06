@@ -9,7 +9,7 @@ const createBlog = async (e) => {
 
     if(blogTitle && blogBody) {
         try {
-            const response = await fetch('/api/user/newblog', {
+            const response = await fetch('/api/blog/new', {
                 method: 'POST',
                 body: JSON.stringify({blogTitle, blogBody}),
                 headers: {'Content-Type': 'application/json'}

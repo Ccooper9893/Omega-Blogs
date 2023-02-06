@@ -46,4 +46,25 @@ router.post('/edit', isAuth, async (req, res) => {
     };
 });
 
+router.post('/delete', isAuth, async (req, res) => {
+    try {
+        const deleteBlog = Blog.destroy({
+            raw: true,
+            nest: true,
+            where: {
+                id: req.body.blogId, user_id: req.session.user.id,
+            },
+        });
+        
+        if(!deleteBlog) {
+            res.status(400).json({message: 'Error in finding blog.'});
+            return;
+        }
+
+        res.status(200).json({message: 'Successfully deleted blog.'})
+    } catch (error) {
+        res.status(500).json(error);
+    };
+});
+
 module.exports = router;

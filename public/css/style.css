@@ -1,5 +1,5 @@
 * {
-    font-family: 'Special Elite', cursive;
+    font-family: 'Kanit', sans-serif;
 }
 
 body {
@@ -7,6 +7,7 @@ body {
     box-sizing: border-box;
     width: 100%;
     min-height: 100vh;
+    background-image: linear-gradient(to bottom, #e2e2e2, #b1b1b1, #828282, #555555, #2d2d2d);
 }
 /* header {
     background-color: black !important;
@@ -21,16 +22,14 @@ body {
 }
 
 .nav-link:hover {
-    text-shadow: 1px 1px 1px grey;
+    text-shadow: 0px 3px 3px rgb(209, 209, 209);
+}
+
+a:hover {
+    text-shadow:0px 2px 5px #2d2d2d;
 }
 
 .form-control:active, .form-control:hover, .form-control:focus {
     border-color: black !important;
     outline: none !important;
 }
-
-.footer {
-    position:relative;
-    bottom: 0;
-    width: 100%;
- }

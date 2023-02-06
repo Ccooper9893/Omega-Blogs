@@ -30,7 +30,7 @@ const deleteBtns = document.querySelectorAll('.deleteComment');
 
 const deleteComment = async (e) => {
     e.preventDefault();
-    commentId = parseInt(e.target.id);
+    commentId = parseInt(e.target.id) ;
     console.log(typeof commentId);
     try {
         const response = await fetch('/api/comment/delete', {

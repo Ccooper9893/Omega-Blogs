@@ -1,17 +1,17 @@
 
       {{#if loggedIn}}
   <div class="card-body mt-3">
-    <h4 class="text-center">Welcome to your Dashboard {{user.username}}</h4>
+    <h3 class="text-center"><u>Welcome to your Dashboard {{user.username}}</u></h3>
     <p class="text-center">This is where you can manage and view your blog posts.</p>
   </div>
 <section class="row d-flex justify-content-center">
-    {{#each blogs as |blog|}}
+    {{#each userBlogs as |blog|}}
       {{> blog-cards}}
     {{/each}}
 </div>
 </section>
 <section class="d-flex justify-content-center">
-  <a href="/blog/new" class="card-link text-reset mt-2"><h5>New Blog</h5></a>
+  <a href="/blog/new" class="card-link text-reset mt-2"><button class="btn border-dark mt-2" style="background-color: #d3d3d3">New Blog</button></a>
 </section>
 {{else}}
 <h5 class="card-title text-danger">You must be signed in to view blog posts!</h5>

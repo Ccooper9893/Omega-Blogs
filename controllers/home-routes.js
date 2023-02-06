@@ -36,7 +36,7 @@ router.get('/signup', (req, res) => {
 router.get('/dashboard', isAuth, async (req, res) => {
 
     try {
-        const blogs = await Blog.findAll({
+        const userBlogs = await Blog.findAll({
             raw:true,
             where: {
                 user_id: req.session.user.id,
@@ -47,9 +47,9 @@ router.get('/dashboard', isAuth, async (req, res) => {
                     attributes: ['username']
                 },
             ],
-        });
-
-        res.render('dashboard', {blogs, loggedIn: req.session.loggedIn});
+        }); 
+        
+        res.render('dashboard', {userBlogs, loggedIn: req.session.loggedIn});
 
     } catch (error) {
         res.status(400).json(error);
