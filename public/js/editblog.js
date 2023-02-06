@@ -18,8 +18,10 @@ const updateBlog = async (e) => {
                 console.log('There has been an error updating your blog post.')
                 return;
             };
+
             document.location.replace(`/blog/${blogId}`);
         };
+        
     } catch (error) {
         console.log(error);
     };

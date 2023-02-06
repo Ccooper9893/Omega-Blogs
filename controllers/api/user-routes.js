@@ -61,7 +61,7 @@ router.post('/signin', async (req, res) => {
         console.log(error);
         res.status(500).json(error);
     };
-    });
+});
 
 //User Sign Out
 router.post('/signout', isAuth, (req, res) => {
@@ -105,6 +105,7 @@ router.post('/edit/:id', isAuth, async (req, res) => {
     try {
 
         const blog = await Blog.findOne({ where: { id: req.params.id } });
+
         blog.set({
             title: req.body.newTitle,
             blog_body: req.body.newBody,
@@ -137,6 +138,7 @@ router.post('/comment/:id', isAuth, async (req, res) => {
         };
 
         res.status(200).json({message: 'Your comment has been posted.'});
+
     } catch (error) {
         res.status(500).json(error);
     };

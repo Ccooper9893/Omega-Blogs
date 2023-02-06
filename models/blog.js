@@ -9,12 +9,12 @@ class Blog extends Model {};
 Blog.init(
     //Define column attributes (Define values required in table)
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true
-        },
+        // id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     autoIncrement: true,
+        //     primaryKey: true
+        // },
         title: {
             type: DataTypes.STRING,
             allowNull: false,
