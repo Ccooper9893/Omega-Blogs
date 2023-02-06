@@ -1,7 +1,16 @@
 <section class="d-flex justify-content-center">
     <div class="card m-3" style="width: 35rem;">
-      <div class="card-body  shadow-sm">
-        <h6 class="card-subtitle mb-2 text-muted">{{user.username}} | {{formatDate createdAt}}</h6>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">
+            <h6 class="float-left col-8">{{user.username}} | {{formatDate createdAt}}</h6>
+          </div>
+          <div class="col-6 d-flex justify-content-end">
+            {{#if isOwner}}
+            <a class="deleteComment" style="cursor: pointer;"><img src="/images/icons/trashcanIcon.png" id="{{id}}" style="width: 0.8rem;"></a>
+            {{/if}}
+          </div>
+        </div>
         <p class="card-text">{{text}}</p>
       </div>
     </div>

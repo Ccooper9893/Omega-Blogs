@@ -1,6 +1,6 @@
-const User = require('../models/User.js');
-const Blog = require('../models/Blog.js');
-const Comment = require('../models/Comment.js');
+const User = require('./User');
+const Blog = require('./Blog');
+const Comment = require('./Comment');
 
 //Associations
 User.hasMany(Blog, {

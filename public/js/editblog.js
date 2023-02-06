@@ -8,9 +8,9 @@ const updateBlog = async (e) => {
     try {
         if(newTitle && newTitle.length < 100 && newBody) {
             const blogId = window.location.pathname.split("/").pop();
-            const response = await fetch(`/api/user/edit/${blogId}`, {
+            const response = await fetch(`/api/blog/edit`, {
                 method: 'POST',
-                body: JSON.stringify({newTitle, newBody}),
+                body: JSON.stringify({blogId, newTitle, newBody}),
                 headers: {'Content-Type': 'application/json'}
             });
 
