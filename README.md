@@ -94,19 +94,19 @@ Github Repo: https://github.com/Ccooper9893/Omega-Blogs
 ___
 Homepage
 
-<img src='./public/images/screenshots/homepageScreenshot.png' alt='Picture of Omega blog homepage' width='40%'>
+<img src='./public/images/screenshots/homepageScreenshot.png' alt='Picture of Omega blog homepage' width='60%'>
 
 Dashboard
 
-<img src='./public/images/screenshots/dashboardScreenshot.png' alt='Picture of Omega blog dashboard' width='40%'>
+<img src='./public/images/screenshots/dashboardScreenshot.png' alt='Picture of Omega blog dashboard' width='60%'>
 
 Blog Post
 
-<img src='./public/images/screenshots/blogpostScreenshot.png' alt='Picture of Omega blog post' width='40%'>
+<img src='./public/images/screenshots/blogpostScreenshot.png' alt='Picture of Omega blog post' width='60%'>
 
 Blog Create
 
-<img src='./public/images/screenshots/blogcreateScreenshot.png' alt='Picture of Omega blog creation' width='40%'>
+<img src='./public/images/screenshots/blogcreateScreenshot.png' alt='Picture of Omega blog creation' width='60%'>
 
 
 
