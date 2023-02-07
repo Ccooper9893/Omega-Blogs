@@ -14,7 +14,8 @@
 
 ## *Description*
 ___
-Omega Blogs is a space in which you can share your ideas and gain knowledge from others. Created using MVP (Mode-View-Controller) paradigm and OOP (Object-Oriented-Programming), Omega Blogs has a simple yet powerful design that has true potential.  
+Omega Blogs is a space in which you can share your ideas and gain knowledge from others. Created using MVP (Mode-View-Controller) paradigm and OOP (Object-Oriented-Programming), Omega Blogs has a simple yet powerful design that has true potential.
+Deployed Application: https://omega-blogs.herokuapp.com/ 
 
 ##  *Features*
 ___
@@ -87,7 +88,6 @@ For more information about this license please visit https://opensource.org/lice
 ## *Questions*
 ___
 For comments/conerns please contact me at https://github.com/Ccooper9893
-Deployed Application: https://omega-blogs.herokuapp.com/
 Github Repo: https://github.com/Ccooper9893/Omega-Blogs
 
 ## *Screenshots*
