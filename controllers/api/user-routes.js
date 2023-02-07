@@ -40,7 +40,7 @@ router.post('/signin', async (req, res) => {
         
         //If user does not exist
         if(!userData) {
-            res.status(400).json({message: 'Invalid username/password. Please try again!'});
+            res.status(404).json({message: 'Invalid username/password.'})
             return;
         };
         
@@ -54,11 +54,10 @@ router.post('/signin', async (req, res) => {
         req.session.save(() => {
             req.session.loggedIn = true;
             req.session.user = userData;
-            res.status(200).json({message: userData});
+            res.status(200).json({message: 'Successfully logged in!'});
         });
 
     } catch (error) {
-        console.log(error);
         res.status(500).json(error);
     };
 });

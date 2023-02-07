@@ -2,10 +2,18 @@
     <div class="card m-3" style="width: 35rem;">
       <div class="card-body">
         <div class="row">
-          <div class="col-6">
-            <h6 class="float-left col-8">{{user.username}} | {{formatDate createdAt}}</h6>
+          <div class="col-10">
+            <h6 class="float-left">{{user.username}} | {{formatDate createdAt}}</h6>
           </div>
-          <div class="col-6 d-flex justify-content-end">
+          <!-- Button trigger modal -->
+          <div class="col-1 justify-content-end">
+            {{#if isOwner}}
+            <a  data-bs-toggle="modal" data-bs-target="#editCommentModule" style="cursor: pointer;">
+              <img src="/images/icons/editIcon.png" style="width: 1.5rem;">
+            </a>
+            {{/if}}
+          </div>
+          <div class="col-1 justify-content-end">
             {{#if isOwner}}
             <a class="deleteComment" style="cursor: pointer;"><img src="/images/icons/trashcanIcon.png" id="{{id}}" style="width: 0.8rem;"></a>
             {{/if}}
@@ -15,4 +23,31 @@
       </div>
     </div>
 </section>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
+{{#if isOwner}}
+<!-- Modal -->
+<div class="modal fade" id="editCommentModule" tabindex="-1" aria-labelledby="editCommentModuleLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="editCommentModuleLabel">Edit Comment</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form type="text">
+          <input type="text" class="form-control" id="editCommentBody" id="newcommentBody" value="{{text}}">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn border-dark mt-2" style="background-color: #d3d3d3" data-bs-dismiss="modal">Close</button>
+        <button type="button"  class="btn border-dark mt-2 editCommentBtn" id="{{id}}" style="background-color: #d3d3d3">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
 

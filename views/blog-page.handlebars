@@ -2,21 +2,22 @@
     <div class="card m-3 shadow-lg" style="width: 50rem;">
       <div class="card-body">
         <div class="row">
-          <div class="col-6">
+          <div class="col-10">
             <h6 class="float-left col-8">Posted by {{blog.user.username}} on {{formatDate blog.createdAt}}</h6>
           </div>
-          <div class="col-6 d-flex justify-content-end">
+          <div class="col-1 d-flex justify-content-end">
+            {{#if isOwner}}
+            <a href="/blog/edit/{{blog.id}}" id="editBtn" class="card-link text-reset"><img src="/images/icons/editIcon.png" style="width: 1.5rem;"></a>
+            {{/if}}
+          </div>
+          <div class="col-1 d-flex justify-content-center">
             {{#if isOwner}}
             <a style="cursor: pointer;" id="deleteBlog"><img src="/images/icons/trashcanIcon.png" id="{{blog.id}}" style="width: 0.8rem;"></a>
             {{/if}}
-          </div>
         </div>
         <h5 class="card-title">{{blog.title}}</h5>
         <br><p class="card-text">{{blog.blog_body}}</p>
       </div>
-      {{#if isOwner}}
-        <a href="/blog/edit/{{blog.id}}" id="editBtn" class="card-link text-reset">Edit</a>
-    {{/if}}
     </div>
   </section>
   
@@ -24,7 +25,7 @@
     <form class="row d-flex justify-content-center">
       <div class="form-group" style="width: 37rem">
         <label for="comment">Add a comment</label>
-        <textarea class="form-control shadow-sm" id="comment" rows="3"></textarea>
+        <textarea class="form-control shadow-sm" id="comment" rows="3" placeholder="What are your thoughts on this blog post?"></textarea>
         <button id="commentBtn" class="btn border-dark mt-2" style="background-color: #d3d3d3">Comment</button>
       </div>
     </form>

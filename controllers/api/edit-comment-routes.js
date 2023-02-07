@@ -24,6 +24,26 @@ router.post('/delete', isAuth, async (req, res) => {
     }
 });
 
+//Edit comment
+router.post('/edit', isAuth, async (req, res) => {
+    try {
+        const editComment = await Comment.findByPk(req.body.editCommentId);
+
+        editComment.set({
+            text: req.body.commentInput,
+        });
+        editComment.save(); 
+
+        if(!editComment) {
+            res.status(400).json({message: 'There has been an error updating your comment'});
+        }
+
+        res.status(200).json({message: 'Successfully updated comment.'});
+    } catch (error) {
+        res.status(500).json(error);
+    };
+});
+
 //Post comment
 router.post('/:id', isAuth, async (req, res) => {
     try {

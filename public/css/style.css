@@ -6,6 +6,17 @@ body {
     box-sizing: border-box;
     width: 100vw;
     min-height: 100vh;
+    /* background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 10%, rgba(87,87,87,1) 64%, rgba(73,73,73,1) 70%, rgba(51,45,45,1) 90%); */
+    /* background-image: radial-gradient(circle, #b8b8b8, #888888, #5c5c5c, #323232, #0b0b0b); */
+    background-image: radial-gradient(circle, #ffffff, #c6c5c7, #918f90, #605b5d, #332d2d);
+}
+
+.card-body {
+    background-image: url(../images/backgrounds/white-waves.png);
+    background-repeat: repeat;
+    border-radius: 0.5rem;
+    box-shadow: 0px 5px 5px black;
 }
 
 #logo {
@@ -21,7 +32,7 @@ body {
 }
 
 a:hover {
-    text-shadow:0px 2px 5px #2d2d2d;
+    text-decoration: none !important;
 }
 
 .form-control:active, .form-control:hover, .form-control:focus {
@@ -31,6 +42,11 @@ a:hover {
 
 .row {
     --bs-gutter-x: 0rem !important;
+}
+
+.btn {
+    color: white !important;
+    background-color: #5e5e5e !important;
 }
 
 footer {

@@ -12,7 +12,7 @@
       
   </head>
   <body class="d-flex flex-column min-vh-100">
-    <header class="border-bottom border-dark shadow-lg" style="background-color: #2d2d2d">
+    <header class="border-bottom border-dark" style="background-color: #2d2d2d">
       <ul class="nav justify-content-center">
         <li class="nav-item px-5">
           <a class="nav-link mt-3 text-light" href="/dashboard">DASHBOARD</a>
@@ -23,7 +23,7 @@
         <li class="nav-item px-5">
                 {{!-- If user is logged in show sign out link --}}
         {{#if loggedIn}}
-          <button class="btn btn-reset text-light mt-2" id="signout" id="logoutBtn"><a class="nav-link text-light">SIGN OUT</a></button>
+          <a class="nav-link text-light mt-3" style="cursor: pointer;" id="signout">SIGN OUT</a>
                 {{!-- If user is not logged in show sign in link --}}
           {{else}}
           <a class="nav-link mt-3 text-light" href="/login">SIGN IN</a>

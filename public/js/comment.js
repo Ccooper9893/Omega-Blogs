@@ -25,13 +25,42 @@ const newComment = async (e) => {
     };
 };
 
+//Edit Comment
+const editCommentBtns = document.querySelectorAll('.editCommentBtn');
+
+const editComment = async (e) => {
+    try {
+        
+    const commentInput = document.querySelector('#editCommentBody').value;
+    const editCommentId = parseInt(e.target.id);
+    
+    const response = await fetch('/api/comment/edit', {
+        method: 'POST',
+        body: JSON.stringify({commentInput, editCommentId}),
+        headers: {'Content-Type': 'application/json'}
+    });
+
+    if(!response.ok) {
+        console.log('There has been an error updating your comment.');
+        return;
+    };
+
+    document.location.reload();
+
+     } catch (error) {
+        console.log(error);    
+    };
+};
+
+for(let commentBtn of editCommentBtns) {
+    commentBtn.addEventListener('click', editComment);
+};
 //Delete comments (ifOwner)
 const deleteBtns = document.querySelectorAll('.deleteComment');
 
 const deleteComment = async (e) => {
     e.preventDefault();
     commentId = parseInt(e.target.id) ;
-    console.log(typeof commentId);
     try {
         const response = await fetch('/api/comment/delete', {
             method: 'POST',
@@ -56,4 +85,3 @@ commentBtn.addEventListener('click', newComment);
 for(btn of deleteBtns) {
     btn.addEventListener('click', deleteComment);
 };
-
