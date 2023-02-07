@@ -1,5 +1,6 @@
 * {
-    font-family: 'Kanit', sans-serif;
+    /* font-family: 'Kanit', sans-serif; */
+    font-family: 'IM Fell English', serif;
 }
 
 body {
@@ -44,12 +45,36 @@ a:hover {
     --bs-gutter-x: 0rem !important;
 }
 
+.card-link {
+    text-decoration: none;
+}
+
+.card-link:hover {
+    text-decoration: underline !important;
+}
+
+section {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+}
+
 .btn {
     color: white !important;
     background-color: #5e5e5e !important;
+}
+
+h6 {
+    border-bottom: 1px solid black;
 }
 
 footer {
     width: 100%;
     background-color: #2d2d2d;
 }
+
+@media screen and (max-width: 575px) {
+    .nav-item {
+        height: 3.8rem;
+
+    }
+  }

@@ -2,18 +2,18 @@
     <div class="card m-3" style="width: 35rem;">
       <div class="card-body">
         <div class="row">
-          <div class="col-10">
+          <div class="col-9">
             <h6 class="float-left">{{user.username}} | {{formatDate createdAt}}</h6>
           </div>
           <!-- Button trigger modal -->
-          <div class="col-1 justify-content-end">
+          <div class="col-2 d-flex justify-content-end">
             {{#if isOwner}}
-            <a  data-bs-toggle="modal" data-bs-target="#editCommentModule" style="cursor: pointer;">
+            <a data-bs-toggle="modal" data-bs-target="#editCommentModule" style="cursor: pointer;">
               <img src="/images/icons/editIcon.png" style="width: 1.5rem;">
             </a>
             {{/if}}
           </div>
-          <div class="col-1 justify-content-end">
+          <div class="col-1 d-flex justify-content-center">
             {{#if isOwner}}
             <a class="deleteComment" style="cursor: pointer;"><img src="/images/icons/trashcanIcon.png" id="{{id}}" style="width: 0.8rem;"></a>
             {{/if}}

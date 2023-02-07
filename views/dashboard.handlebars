@@ -3,14 +3,17 @@
   <div class="mt-3">
     <h3 class="text-center"><u>Welcome to your Dashboard {{user.username}}</u></h3>
     <p class="text-center">This is where you can manage and view your blog posts.</p>
+
+    <section class="d-flex justify-content-center mb-3">
+      <a href="/blog/new" class="card-link text-reset mt-2"><button class="btn border-dark mt-2" style="background-color: #d3d3d3">New Blog</button></a>
+    </section>
+
     <section class="row d-flex justify-content-center">
     {{#each userBlogs as |blog|}}
       {{> blog-cards}}
     {{/each}}
-</section>
-<section class="d-flex justify-content-center">
-  <a href="/blog/new" class="card-link text-reset mt-2"><button class="btn border-dark mt-2" style="background-color: #d3d3d3">New Blog</button></a>
-</section>
+    </section>
+
 {{else}}
 <h5 class="card-title text-danger">You must be signed in to view blog posts!</h5>
 {{/if}}
