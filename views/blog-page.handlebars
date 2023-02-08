@@ -5,9 +5,9 @@
           <div class="col-10">
             <h6 class="float-left col-8">Posted by {{blog.user.username}} on {{formatDate blog.createdAt}}</h6>
           </div>
-          <div class="col-1 d-flex justify-content-center">
+          <div class="col-1 d-flex justify-content-end">
             {{#if isOwner}}
-            <a style="cursor: pointer;" id="deleteBlog"><img src="/images/icons/trashcanIcon.png" id="{{blog.id}}" style="width: 1.6rem;"></a>
+            <a class="text-right" style="cursor: pointer; margin-right: auto;" id="deleteBlog"><img src="/images/icons/trashcanIcon.png" id="{{blog.id}}" style="width: 1.1rem;"></a>
             {{/if}}
         </div>
         <h5 class="card-title">{{blog.title}}</h5>
@@ -15,7 +15,7 @@
       </div>
                 <div>
             {{#if isOwner}}
-            <a href="/blog/edit/{{blog.id}}" id="editBtn" class="card-link text-reset"><img src="/images/icons/editIcon.png" style="width: 2.5rem;"></a>
+            <a href="/blog/edit/{{blog.id}}" id="editBtn" class="card-link text-reset"><img src="/images/icons/editIcon.png" style="width: 2.3rem;"></a>
             {{/if}}
           </div>
     </div>
