@@ -6,21 +6,22 @@
             <h6 class="float-left">{{user.username}} | {{formatDate createdAt}}</h6>
           </div>
           <!-- Button trigger modal -->
-          <div class="col-2 d-flex justify-content-end">
-            {{#if isOwner}}
-            <a data-bs-toggle="modal" data-bs-target="#editCommentModule" style="cursor: pointer;">
-              <img src="/images/icons/editIcon.png" style="width: 1.5rem;">
-            </a>
-            {{/if}}
-          </div>
-          <div class="col-1 d-flex justify-content-center">
+          <div class="col-3 d-flex justify-content-end">
             {{#if isOwner}}
             <a class="deleteComment" style="cursor: pointer;"><img src="/images/icons/trashcanIcon.png" id="{{id}}" style="width: 0.8rem;"></a>
             {{/if}}
           </div>
         </div>
         <p class="card-text">{{text}}</p>
+          <div>
+            {{#if isOwner}}
+            <a data-bs-toggle="modal" data-bs-target="#editCommentModule" style="cursor: pointer;">
+              <img src="/images/icons/editIcon.png" style="width: 1.5rem;">
+            </a>
+            {{/if}}
+          </div>
       </div>
+      
     </div>
 </section>
 <!-- Button trigger modal -->
