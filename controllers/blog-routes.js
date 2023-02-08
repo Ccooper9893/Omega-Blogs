@@ -16,7 +16,7 @@ router.get('/edit/:id', isAuth, async (req, res) => {
             return;
         };
         const blog = blogData.get({plain: true});
-        res.render('blog-edit', {blog});
+        res.render('blog-edit', {blog, loggedIn: req.session.loggedIn});
     } catch (error) {
         res.status(500).json(error);
     }
