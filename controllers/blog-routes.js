@@ -23,11 +23,10 @@ router.get('/edit/:id', isAuth, async (req, res) => {
 });
 
 //Display specific Blog
-router.get('/:id', isAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
 
     try { //Grabbing blog by primary key id
         const blogData = await Blog.findByPk(req.params.id, {
-            raw: false,
             include: [
                 {
                     model: User,
@@ -54,13 +53,14 @@ router.get('/:id', isAuth, async (req, res) => {
         
         //Maps comments and returns new array
         const comments = commentData.map((comment) => {
-            if(comment.user_id === req.session.user.id) {
+            if(comment.user_id === req.session.user?.id) {
                 comment.isOwner = true;
             };
             return comment;
         });
 
-        const isOwner = req.session.user.id === blogData.user_id;//Checks if blog is owned by current user
+       // const isOwner = req.session.user.id === blogData.user_id;//Checks if blog is owned by current user
+        const isOwner = req.session.user?.id === blogData.user_id;//Checks if blog is owned by current user
         const blog = blogData.get({plain:true});
         res.render('blog-page', {blog, comments, loggedIn: req.session.loggedIn, isOwner});
 
