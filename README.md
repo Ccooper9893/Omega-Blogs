@@ -1,9 +1,15 @@
 # Omega Blogs
 ![Badge image](https://img.shields.io/badge/license-MIT-green})
 
+## *Description*
+___
+## *Description*
+___
+Omega Blogs is a space in which you can share your ideas and gain knowledge from others. Created using MVP (Mode-View-Controller) paradigm and OOP (Object-Oriented-Programming), Omega Blogs has a simple yet powerful design that has true potential.
+Deployed Application: https://omega-blogs.herokuapp.com/ 
+
 ## *Table of Contents*
  ___
-  - [Installation](#description)
   - [Features](#features)
   - [Usage](#usage)
   - [Software](#software)
@@ -11,11 +17,6 @@
   - [License](#license)
   - [Questions](#questions)
   - [Screenshots](#screenshots)
-
-## *Description*
-___
-Omega Blogs is a space in which you can share your ideas and gain knowledge from others. Created using MVP (Mode-View-Controller) paradigm and OOP (Object-Oriented-Programming), Omega Blogs has a simple yet powerful design that has true potential.
-Deployed Application: https://omega-blogs.herokuapp.com/ 
 
 ##  *Features*
 ___

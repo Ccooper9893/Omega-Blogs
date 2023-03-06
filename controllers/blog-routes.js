@@ -50,7 +50,7 @@ router.get('/:id', async (req, res) => {
                 },
             ],
         });
-        
+
         //Maps comments and returns new array
         const comments = commentData.map((comment) => {
             if(comment.user_id === req.session.user?.id) {
